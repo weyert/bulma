@@ -328,6 +328,12 @@ th {
   text-align: left;
 }
 
+button {
+  font-size: inherit;
+  background-color: transparent;
+  border: none;
+}
+
 html {
   background-color: white;
   font-size: 16px;
@@ -1569,12 +1575,70 @@ a.has-text-danger:hover, a.has-text-danger:focus {
   padding: 1.25rem;
 }
 
+.box.is-fullwidth {
+  width: 100%;
+}
+
 a.box:hover, a.box:focus {
   box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px #3273dc;
 }
 
 a.box:active {
   box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.2), 0 0 0 1px #3273dc;
+}
+
+.boxes {
+  align-items: stretch;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.boxes .box {
+  margin-bottom: 1.5rem;
+}
+
+.boxes .box:not(:last-child) {
+  margin-right: 0.5rem;
+}
+
+.boxes .box.is-expanded {
+  flex-grow: 1;
+}
+
+.boxes.has-addons .box {
+  margin-right: 0;
+}
+
+.boxes.has-addons .box:not(:first-child) {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+
+.boxes.has-addons .box:not(:last-child) {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.boxes.is-centered {
+  justify-content: center;
+}
+
+.boxes.is-centered:not(.has-addons) .box {
+  margin-right: 0.25rem;
+  margin-left: 0.25rem;
+}
+
+.boxes.is-right {
+  justify-content: flex-end;
+}
+
+.boxes.is-right:not(.has-addons) .box:not(:first-child) {
+  margin-left: 0.5rem;
+}
+
+.boxes.is-right:not(.has-addons) .box:not(:last-child) {
+  margin-right: 0;
 }
 
 .button {
@@ -2766,8 +2830,18 @@ fieldset[disabled] .button {
   justify-content: center;
 }
 
+.buttons.is-centered:not(.has-addons) .button:not(.is-fullwidth) {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+}
+
 .buttons.is-right {
   justify-content: flex-end;
+}
+
+.buttons.is-right:not(.has-addons) .button:not(.is-fullwidth) {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
 }
 
 .container {
@@ -3019,6 +3093,7 @@ fieldset[disabled] .button {
 .textarea {
   background-color: white;
   border-color: #dbdbdb;
+  border-radius: 4px;
   color: #363636;
   box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
   max-width: 100%;
@@ -3357,6 +3432,7 @@ fieldset[disabled]
 .select select {
   background-color: white;
   border-color: #dbdbdb;
+  border-radius: 4px;
   color: #363636;
   cursor: pointer;
   display: block;
@@ -5635,6 +5711,50 @@ a.tag:hover {
   border-right: 1px solid #dbdbdb;
 }
 
+@media screen and (min-width: 769px), print {
+  .card.is-horizontal {
+    flex-direction: row;
+    display: flex;
+    flex-basis: 50ex;
+    flex-grow: 0;
+    flex-shrink: 1;
+  }
+  .card.is-horizontal .card-image {
+    flex: 1;
+  }
+  .card.is-horizontal .card-image .image {
+    min-height: 100%;
+  }
+  .card.is-horizontal .card-content {
+    flex: 1;
+  }
+  .card.is-horizontal.is-right {
+    flex-direction: row-reverse;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .card.is-horizontal.is-mobile {
+    flex-direction: row;
+    display: flex;
+    flex-basis: 50ex;
+    flex-grow: 0;
+    flex-shrink: 1;
+  }
+  .card.is-horizontal.is-mobile .card-image {
+    flex: 1;
+  }
+  .card.is-horizontal.is-mobile .card-image .image {
+    min-height: 100%;
+  }
+  .card.is-horizontal.is-mobile .card-content {
+    flex: 1;
+  }
+  .card.is-horizontal.is-mobile.is-right {
+    flex-direction: row-reverse;
+  }
+}
+
 .card .media:not(:last-child) {
   margin-bottom: 0.75rem;
 }
@@ -7625,7 +7745,7 @@ label.panel-block:hover {
   white-space: nowrap;
 }
 
-.tabs a {
+.tabs a, .tabs button {
   align-items: center;
   border-bottom-color: #dbdbdb;
   border-bottom-style: solid;
@@ -7638,7 +7758,7 @@ label.panel-block:hover {
   vertical-align: top;
 }
 
-.tabs a:hover {
+.tabs a:hover, .tabs button:hover {
   border-bottom-color: #363636;
   color: #363636;
 }
@@ -7647,7 +7767,7 @@ label.panel-block:hover {
   display: block;
 }
 
-.tabs li.is-active a {
+.tabs li.is-active a, .tabs li.is-active button {
   border-bottom-color: #3273dc;
   color: #3273dc;
 }
@@ -7695,17 +7815,17 @@ label.panel-block:hover {
   justify-content: flex-end;
 }
 
-.tabs.is-boxed a {
+.tabs.is-boxed a, .tabs.is-boxed button {
   border: 1px solid transparent;
   border-radius: 4px 4px 0 0;
 }
 
-.tabs.is-boxed a:hover {
+.tabs.is-boxed a:hover, .tabs.is-boxed button:hover {
   background-color: whitesmoke;
   border-bottom-color: #dbdbdb;
 }
 
-.tabs.is-boxed li.is-active a {
+.tabs.is-boxed li.is-active a, .tabs.is-boxed li.is-active button {
   background-color: white;
   border-color: #dbdbdb;
   border-bottom-color: transparent !important;
@@ -7716,7 +7836,7 @@ label.panel-block:hover {
   flex-shrink: 0;
 }
 
-.tabs.is-toggle a {
+.tabs.is-toggle a, .tabs.is-toggle button {
   border-color: #dbdbdb;
   border-style: solid;
   border-width: 1px;
@@ -7724,7 +7844,7 @@ label.panel-block:hover {
   position: relative;
 }
 
-.tabs.is-toggle a:hover {
+.tabs.is-toggle a:hover, .tabs.is-toggle button:hover {
   background-color: whitesmoke;
   border-color: #b5b5b5;
   z-index: 2;
@@ -7734,15 +7854,15 @@ label.panel-block:hover {
   margin-left: -1px;
 }
 
-.tabs.is-toggle li:first-child a {
+.tabs.is-toggle li:first-child a, .tabs.is-toggle li:first-child button {
   border-radius: 4px 0 0 4px;
 }
 
-.tabs.is-toggle li:last-child a {
+.tabs.is-toggle li:last-child a, .tabs.is-toggle li:last-child button {
   border-radius: 0 4px 4px 0;
 }
 
-.tabs.is-toggle li.is-active a {
+.tabs.is-toggle li.is-active a, .tabs.is-toggle li.is-active button {
   background-color: #3273dc;
   border-color: #3273dc;
   color: #fff;
@@ -7753,13 +7873,13 @@ label.panel-block:hover {
   border-bottom: none;
 }
 
-.tabs.is-toggle.is-toggle-rounded li:first-child a {
+.tabs.is-toggle.is-toggle-rounded li:first-child a, .tabs.is-toggle.is-toggle-rounded li:first-child button {
   border-bottom-left-radius: 290486px;
   border-top-left-radius: 290486px;
   padding-left: 1.25em;
 }
 
-.tabs.is-toggle.is-toggle-rounded li:last-child a {
+.tabs.is-toggle.is-toggle-rounded li:last-child a, .tabs.is-toggle.is-toggle-rounded li:last-child button {
   border-bottom-right-radius: 290486px;
   border-top-right-radius: 290486px;
   padding-right: 1.25em;
@@ -10507,6 +10627,7 @@ label.panel-block:hover {
 
 .section {
   padding: 3rem 1.5rem;
+  position: relative;
 }
 
 @media screen and (min-width: 1088px) {
@@ -10521,5 +10642,15 @@ label.panel-block:hover {
 .footer {
   background-color: #fafafa;
   padding: 3rem 1.5rem 6rem;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.page .main {
+  flex: 1;
 }
 /*# sourceMappingURL=bulma.css.map */
