@@ -5728,6 +5728,10 @@ a.tag:hover {
   .card.is-horizontal .card-content {
     flex: 1;
   }
+  .card.is-horizontal .card-footer {
+    border-left: 1px solid #dbdbdb;
+    border-top: none;
+  }
   .card.is-horizontal.is-right {
     flex-direction: row-reverse;
   }
@@ -5749,6 +5753,10 @@ a.tag:hover {
   }
   .card.is-horizontal.is-mobile .card-content {
     flex: 1;
+  }
+  .card.is-horizontal.is-mobile .card-footer {
+    border-left: 1px solid #dbdbdb;
+    border-top: none;
   }
   .card.is-horizontal.is-mobile.is-right {
     flex-direction: row-reverse;
